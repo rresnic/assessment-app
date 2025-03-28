@@ -19,10 +19,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.yresnic.manishappalpha"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "395e2249-d2a8-4c42-bf3a-37cc92679203"
+      }
+    },
+    "owner": "yresnic"
   }
 }
