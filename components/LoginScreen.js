@@ -55,7 +55,7 @@ const LoginScreen = () => {
 }, [errorAttempts]);
 
   const validateInputs = () => {
-    const phoneRegex = /^05\d{8}$/; // 10 digits, starts with 05
+    const phoneRegex = /^05\d{8}$/; 
 
     return (
       phoneRegex.test(phone) 
@@ -64,8 +64,8 @@ const LoginScreen = () => {
 
   const isFormSubmissionTimeValid = () => {
     if (!timeStart) return false;
-    const elapsed = (Date.now() - timeStart) / 1000; // Convert to seconds
-    return elapsed >= 3 && elapsed <= 480; // 3 seconds to 8 minutes
+    const elapsed = (Date.now() - timeStart) / 1000; 
+    return elapsed >= 3 && elapsed <= 480; 
   };
 
   const handleLogin = async () => {
@@ -92,7 +92,7 @@ const LoginScreen = () => {
     setErrorMessage(''); 
     if (recaptchaRequired || errorAttempts >= 3) {
        await handleVerify();
-       await new Promise(resolve => setTimeout(resolve, 1000)); // delay for setstate async schenanigans 
+       await new Promise(resolve => setTimeout(resolve, 1000)); // attempted delay for setstate async schenanigans 
       if (!captchaToken) {
         setErrorMessage('reCaptcha failed. Please try again');
         Alert.alert('reCAPTCHA failed. Please try again.');
@@ -109,30 +109,6 @@ const LoginScreen = () => {
         setErrorAttempts(prev => prev + 1);
         setErrorMessage(error.message || 'Login failed. Try again.');
     }
-    // const response = await fetch('https://assessment-server-tr6b.onrender.com/userapi/login', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify({
-    //     phone,
-    //     errorAttempts,
-    //     captchaToken,
-    //     honeypot,
-    //     timeToken,
-    //   }),
-    // });
-
-    // const result = await response.json();
-    // console.log(result);
-    // console.log(response);
-    // if (!response.ok) {
-    //   setErrorAttempts(prev => prev + 1); 
-    //   Alert.alert(result.message || 'Login failed. Try again.');
-    //   console.log(result.message);
-    //   return;
-    // }
-    // // Alert.alert("בוצע בהצלחה")
-    // navigation.replace("Construction")
-    // // setShowModal(true); work on custom modal later
   };
 
   return (
@@ -182,7 +158,6 @@ const LoginScreen = () => {
       />
       {errorMessage && <Text style={styles.errorText}>{errorMessage}</Text>}
 
-      {/* <Button style={styles.button} title="הלאה" onPress={handleLogin} /> */}
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
             <Text style={styles.buttonText}>הלאה</Text>
       </TouchableOpacity>
@@ -248,6 +223,10 @@ const styles = StyleSheet.create({
       paddingVertical: 10,
       paddingHorizontal: 20,
       borderRadius: 25,
+    },
+    buttonText: {
+        fontFamily: "Rubik",
+        
     },
     honeypot: {
         position: 'absolute',

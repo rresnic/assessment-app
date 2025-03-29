@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
           throw new Error(result.message || 'Login failed.');
         }
     
-        setUser(phone); // Store the phone as the user identifier (you can change this)
+        setUser(phone); 
         await AsyncStorage.setItem('rysrmanUser', JSON.stringify({ user: phone }));
     }
     const logout = async () => {
@@ -45,7 +45,7 @@ export const AuthProvider = ({ children }) => {
     // };
     
     const checkAuth = async () => {
-        const storedUser = await AsyncStorage.getItem('user');
+        const storedUser = await AsyncStorage.getItem('rysrmanUser');
             if (storedUser) {
                 setUser(JSON.parse(storedUser));
             }
